@@ -1,0 +1,150 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user identifier matching auth UID"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User avatar image URL"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when account was created"
+        }
+      },
+      "required": ["id", "email"]
+    },
+    "FileRecord": {
+      "title": "FileRecord",
+      "description": "Metadata for uploaded file in Firebase Storage",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique file identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Original file name",
+          "maxLength": 255
+        },
+        "size": {
+          "type": "number",
+          "description": "File size in bytes"
+        },
+        "type": {
+          "type": "string",
+          "description": "MIME type"
+        },
+        "downloadUrl": {
+          "type": "string",
+          "description": "Direct download and preview URL from Firebase Cloud Storage"
+        },
+        "storagePath": {
+          "type": "string",
+          "description": "Cloud Storage bucket path"
+        },
+        "folderId": {
+          "type": "string",
+          "description": "Folder ID or null for root directory"
+        },
+        "isStarred": {
+          "type": "boolean",
+          "description": "Whether file is marked as favorite"
+        },
+        "isTrash": {
+          "type": "boolean",
+          "description": "Whether file is in trash bin"
+        },
+        "trashedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When file was moved to trash"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags associated with file"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when file was uploaded"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when file was last modified"
+        }
+      },
+      "required": ["id", "userId", "name", "size", "type"]
+    },
+    "Folder": {
+      "title": "Folder",
+      "description": "Directory folder for organizing files",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique folder identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Folder name",
+          "maxLength": 100
+        },
+        "parentId": {
+          "type": "string",
+          "description": "Parent folder ID or null"
+        },
+        "color": {
+          "type": "string",
+          "description": "Hex color code for folder badge"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Folder creation timestamp"
+        }
+      },
+      "required": ["id", "userId", "name"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile collection"
+    },
+    "/users/{userId}/files/{fileId}": {
+      "schema": "FileRecord",
+      "description": "User files collection"
+    },
+    "/users/{userId}/folders/{folderId}": {
+      "schema": "Folder",
+      "description": "User folders collection"
+    }
+  }
+}

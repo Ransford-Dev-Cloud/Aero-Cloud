@@ -1,0 +1,8 @@
+{
+  "name": "AeroVault Cloud Storage",
+  "description": "Secure, personal cloud storage for files, photos, and media accessible across all your devices on the web.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

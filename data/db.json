@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "user-1792049605291-h9vkr",
+      "name": "Nana Ransford",
+      "email": "ransfordnana001@gmail.com",
+      "passwordHash": "$2b$10$SXYhD8uv2mdbC9Tn09biFuHltDdOLgymat2TgPLj2IVDJLz3Usc8G",
+      "createdAt": "2026-10-15T07:33:25.291Z"
+    }
+  ],
+  "files": [],
+  "folders": []
+}
